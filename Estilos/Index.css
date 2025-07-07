@@ -180,3 +180,8 @@ margin-right: 150px;
     color: var(--Rojo);
     text-decoration: underline;
 }
+
+#wave {
+    position: relative;
+    top: 10px;
+}

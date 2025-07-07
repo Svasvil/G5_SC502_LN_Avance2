@@ -67,3 +67,8 @@
 .contacto-derecha button:hover {
   background-color: var(--Verde);
 }
+
+#wave {
+    position: relative;
+    top: 10px;
+}
