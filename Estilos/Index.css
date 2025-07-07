@@ -1,0 +1,99 @@
+
+:root{
+    --azulOscuro: #0e2776;
+    --Negro: #000;
+    --Blanco: #ffff;
+    --Celeste: #62ABD9;
+    --Azulmedio: #032CA6;
+    --Gris: #D9D9D9;
+    
+    --Contraste : #F05050;
+    --Rojo:#FF0000;
+    
+}
+
+
+.contendedorNav {
+    display: flex;
+    background-color: var(--Blanco);
+    height: 75px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-left: 150px;
+}
+
+.Navegacion-Principal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.Navegacion-Principal a {
+    color: var(--Celeste);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Navegacion-Principal a.navbar-brand img {
+    height: 60px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.Navegacion-Principal a:hover {
+text-decoration: none;
+color: var(--Rojo);
+transform: translateY(-3px); 
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+
+}
+
+ .contenedor {
+    display: flex;
+    flex-wrap: wrap; /* Added for responsiveness */
+}
+
+.izquierda {
+    flex: 1;
+    background-color: var(--bg);
+    border-top-left-radius: 15%;
+    border-bottom-left-radius: 15%;
+    height: 500px;
+    color: var(--blanco);
+    justify-content: center;
+    text-align: center;
+    min-width: 300px; /* Added for responsiveness */
+}
+
+.derecha {
+    flex: 1;
+    background-color: var(--blanco);
+    height: 500px;
+    min-width: 300px; /* Added for responsiveness */
+}
+
+.derecha h1 {
+    font-size: 50px;
+    margin-left: 50px;
+}
+
+.derecha p {
+    font-size: 30px;
+    margin-left: 50px;
+}
+
+.Icon {
+    margin-top: 120px;
+    justify-content: center;
+}
