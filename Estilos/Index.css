@@ -61,7 +61,7 @@ box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 
  .contenedor {
     display: flex;
-    flex-wrap: wrap; /* Added for responsiveness */
+    flex-wrap: wrap; 
 }
 
 .izquierda {
@@ -69,31 +69,115 @@ box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     background-color: var(--bg);
     border-top-left-radius: 15%;
     border-bottom-left-radius: 15%;
+    margin-left: 150px;
     height: 500px;
     color: var(--blanco);
     justify-content: center;
     text-align: center;
-    min-width: 300px; /* Added for responsiveness */
+    min-width: 300px;
 }
 
 .derecha {
     flex: 1;
     background-color: var(--blanco);
     height: 500px;
-    min-width: 300px; /* Added for responsiveness */
+    min-width: 300px;
+    margin-left: 150px;
 }
 
-.derecha h1 {
-    font-size: 50px;
-    margin-left: 50px;
+.izquierda h1 {
+    font-size: 2rem;      
+    margin-left: 2rem;    
+    color: var(--Celeste);
 }
 
-.derecha p {
-    font-size: 30px;
-    margin-left: 50px;
+.izquierda p {
+    font-size: 1.3rem;    
+    margin-left: 2rem;
+    color: var(--Celeste);
 }
 
+
+@media (max-width: 900px) {
+    .izquierda h1,
+    .izquierda p {
+        margin-left: 1rem;
+        font-size: 1.1rem;
+    }
+}
 .Icon {
     margin-top: 120px;
     justify-content: center;
+}
+
+.contenedor-flex {
+margin-left: 150px;
+margin-right: 150px;
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+.item {
+  flex: 1; 
+  margin: 10px;
+
+}
+.Productos h2{
+    color: var(--Celeste);
+    text-align: center;
+}
+.btnProducto{
+    background-color: var(--azulOscuro);
+    color: var(--Blanco);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.btnProducto:hover {
+    background-color: var(--Rojo);
+    color: var(--Blanco);
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+    text-decoration: none;
+}
+.fondo{
+    background-color: var(--Celeste);
+    height: 50px;
+    width:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding: 2px;
+    border-radius: 50px;
+}
+.fondo h2 {
+    color: var(--Blanco);
+    font-size: 30px;
+    text-align: center;
+}
+.footer {
+    background-color: var(--Blanco);
+    color: var(--Celeste);
+    text-align: center;
+    padding: 30px 10px 15px 10px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.footer-content a {
+    color: var(--Celeste);
+    text-decoration: none;
+    margin: 0 8px;
+    transition: color 0.3s;
+}
+
+.footer-content a:hover {
+    color: var(--Rojo);
+    text-decoration: underline;
 }
