@@ -10,7 +10,7 @@
 .contacto-izquierda,
 .contacto-derecha {
   flex: 1 1 400px;
-  background-color: var(--Gris);
+  background-color: var(--Blanco);
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -24,7 +24,7 @@
 }
 
 .contacto-izquierda p {
-  font-size: 18px;
+  font-size: 25px;
   margin: 10px 0;
   color: var(--Negro);
 }
@@ -65,5 +65,5 @@
 }
 
 .contacto-derecha button:hover {
-  background-color: var(--Verde);
+  background-color: var(--Rojo);
 }
