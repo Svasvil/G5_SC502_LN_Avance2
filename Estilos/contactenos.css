@@ -1,3 +1,4 @@
+/* Base styles for all screen sizes */
 .contacto-contenedor {
   display: flex;
   flex-wrap: wrap;
@@ -66,4 +67,21 @@
 
 .contacto-derecha button:hover {
   background-color: var(--Rojo);
+}
+
+/* Media query for smaller screens (e.g., mobile phones) */
+@media (max-width: 768px) {
+  .contacto-contenedor {
+    gap: 20px; /* Reduce gap on smaller screens */
+    margin: 20px; /* Use smaller margins on mobile */
+  }
+
+  .contacto-izquierda,
+  .contacto-derecha {
+    padding: 15px; /* Reduce padding to save space */
+  }
+
+  .contacto-izquierda p {
+    font-size: 20px; /* Adjust font size for better readability */
+  }
 }
