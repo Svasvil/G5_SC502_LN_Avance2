@@ -1,0 +1,55 @@
+:root{
+  --brand:#63BBEF;
+  --brand-dark:#3aa3e6;
+  --soft:#f4f9ff;
+}
+
+.card { border:0; border-radius:16px; }
+.card.shadow-sm { box-shadow:0 8px 20px rgba(0,0,0,.06); }
+
+h3{ font-weight:700; }
+
+.btn-primary{
+  background:var(--brand);
+  border-color:var(--brand);
+}
+.btn-primary:hover{
+  background:var(--brand-dark);
+  border-color:var(--brand-dark);
+}
+.btn-outline-primary{
+  color:var(--brand);
+  border-color:var(--brand);
+}
+.btn-outline-primary:hover{
+  background:var(--brand);
+  color:#fff;
+}
+
+.form-control{
+  border-radius:12px;
+  border-color:#e5eef7;
+}
+.form-control:focus{
+  border-color:var(--brand);
+  box-shadow:0 0 0 .2rem rgba(99,187,239,.2);
+}
+
+.thead-custom th{
+  background:linear-gradient(0deg, var(--soft), #fff);
+  border-bottom:2px solid #e8f0fb;
+  color:#4b5b6b;
+  font-weight:600;
+}
+
+.table td, .table th { vertical-align:middle; }
+.table tbody tr:hover { background:#f9fcff; }
+
+.table td.text-right{ font-variant-numeric: tabular-nums; }
+
+#productosResult{ font-size:.95rem; }
+
+.table .btn{
+  border-radius:10px;
+  padding:.25rem .5rem;
+}

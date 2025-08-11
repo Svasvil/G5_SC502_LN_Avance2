@@ -24,12 +24,10 @@ $(function () {
     });
 
     $(document).ready(function() {
-    // Check if the products table exists and load data
     if ($('#productosTable').length) {
         fetchProductos();
     }
 
-    // Handle form submission for creating or updating a product
     $('#productosForm').submit(function(e) {
         e.preventDefault();
         let formData = $(this).serialize();
@@ -48,7 +46,6 @@ $(function () {
         }, 'json');
     });
 
-    // Handle the "Cancel" button click to reset the form
     $('#cancelEdit').click(function() {
         $('#productosForm')[0].reset();
         $('#id_producto').val('');
@@ -56,42 +53,44 @@ $(function () {
         $('#productosResult').text('');
     });
 
-    // Handle the "Load" button click to refresh the table (if you have one)
     $('#loadProductos').on('click', function() {
         fetchProductos();
     });
 });
 
-/**
- * Fetches all products and populates the products table.
- */
+
 function fetchProductos() {
-    $.get('router.php?action=listProductos', function(response) {
-        let rows = '';
-        if (response.status === 'success' && response.data.length > 0) {
-            response.data.forEach(producto => {
-                rows += `
-                    <tr>
-                        <td>${producto.id_producto}</td>
-                        <td>${producto.nombre_producto}</td>
-                        <td>${producto.descripcion}</td>
-                        <td>${producto.precio}</td>
-                        <td>${producto.nombre_categoria}</td>
-                        <td>${producto.especie_relacionada}</td>
-                        <td>
-                            <button onclick="editProducto(${producto.id_producto})" class="btn-edit">Editar</button>
-                            <button onclick="deleteProducto(${producto.id_producto})" class="btn-delete">Eliminar</button>
-                        </td>
-                    </tr>`;
-            });
-        } else {
-            rows = '<tr><td colspan="7">No hay productos registrados</td></tr>';
-        }
-        $('#productosTable tbody').html(rows);
-    }, 'json').fail(function() {
-        $('#productosTable tbody').html('<tr><td colspan="7">Error al cargar los productos</td></tr>');
-    });
+  $.get('router.php?action=listProductos', function(response) {
+    let rows = '';
+    if (response.status === 'success' && response.data.length > 0) {
+      response.data.forEach(producto => {
+        rows += `
+          <tr>
+            <td>${producto.id_producto}</td>
+            <td>${producto.nombre_producto}</td>
+            <td>${producto.descripcion || ''}</td>
+            <td class="text-right">${Number(producto.precio).toFixed(2)}</td>
+            <td>${producto.nombre_categoria || ''}</td>
+            <td>${producto.especie_relacionada || ''}</td>
+            <td class="text-center">
+              <button onclick="editProducto(${producto.id_producto})" class="btn btn-sm btn-outline-primary mr-1">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button onclick="deleteProducto(${producto.id_producto})" class="btn btn-sm btn-outline-danger">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>`;
+      });
+    } else {
+      rows = '<tr><td colspan="7" class="text-center text-muted py-4">No hay productos registrados</td></tr>';
+    }
+    $('#productosTable tbody').html(rows);
+  }, 'json').fail(function() {
+    $('#productosTable tbody').html('<tr><td colspan="7" class="text-center text-danger py-4">Error al cargar los productos</td></tr>');
+  });
 }
+
 
 /**
  * Fetches a single product's data and populates the form for editing.
@@ -136,4 +135,9 @@ function deleteProducto(id) {
         });
     }
 }
+
+window.fetchProductos = fetchProductos;
+window.editProducto = editProducto;
+window.deleteProducto = deleteProducto;
+
 });
