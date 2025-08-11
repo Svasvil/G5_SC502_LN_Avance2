@@ -23,6 +23,33 @@ $(function () {
         });
     });
 
+    $('#register-form').submit(function (e) {
+    e.preventDefault();
+    
+
+    $.ajax({
+        url: 'router.php?action=register',
+        method: 'POST',
+        data: $(this).serialize(),
+        dataType: 'json',
+        success: function (response) {
+            if (response.status === 'success') {
+                $('#registerResult').text('Se registró correctamente');
+                $('#register-form')[0].reset();
+                setTimeout(function () {
+                    window.location.href = 'login.php';
+                }, 1000);
+            } else {
+                $('#registerResult').text(response.message || 'Error en el registro');
+            }
+        },
+        error: function () {
+            $('#registerResult').text('Error de conexión con el servidor');
+        }
+    });
+});
+
+
     $(document).ready(function() {
     if ($('#productosTable').length) {
         fetchProductos();
