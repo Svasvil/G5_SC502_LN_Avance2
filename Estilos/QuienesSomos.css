@@ -17,33 +17,48 @@ body {
 }
 
 .contendedorNav {
-  background-color: var(--Blanco);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    background-color: var(--Blanco);
+    height: 75px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* margin-left: 150px; <-- Línea eliminada */
 }
 
+/* 3. Se elimina margin-left */
 .Navegacion-Principal {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .Navegacion-Principal a {
-  color: var(--azulOscuro);
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px 15px;
-  transition: color 0.3s ease;
+    color: var(--Celeste);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Navegacion-Principal a.navbar-brand img {
+    height: 60px;
+    width: auto;
+    margin-right: 10px;
 }
 
 .Navegacion-Principal a:hover {
-  color: var(--Rojo);
-}
-
-.navbar-brand img {
-  display: block;
+    text-decoration: none;
+    color: var(--Rojo);
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
 }
 
 .contenedor {
