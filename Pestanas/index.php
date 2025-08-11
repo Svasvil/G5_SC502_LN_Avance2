@@ -15,13 +15,28 @@
      <a href="index.php">
     <img src="../Img/89e80d4a-3e74-4e90-9368-87538123716e_removalai_preview.png" width="125" height="90" alt="Logo">
   </a>
-      <a href="login.php">Iniciar Sesión</a>
       <a href="index.php">Inicio</a>
       <a href="productos_index.php">Productos</a>
       <a href="servicios.html">Servicios</a>
-      <a href="contactenos.html">Contáctenos</a>
-      <a href="quienes_somos.html">Quiénes Somos</a>
-      <a href="perfil.html">Mi Cuenta</a>
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > Nosotros</a>
+  <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
+    <a href="quienes_somos.html">Quiénes Somos</a>
+    <a href="contactenos.html">Contáctenos</a>
+  </div>
+</div>
+
+
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > Tu cuenta</a>
+  <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
+    <a href="login.php">Iniciar Sesión</a>
+    <a href="perfil.html">Mi Cuenta</a>
+  </div>
+</div>
+
+     
+
     </nav>
     </div>
     <br>
@@ -98,5 +113,9 @@
 </footer>
 
 </body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </html>
