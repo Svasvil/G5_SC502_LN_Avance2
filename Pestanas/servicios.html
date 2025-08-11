@@ -17,7 +17,7 @@
   </a>
       <a href="login.php">Iniciar Sesión</a>
       <a href="index.php">Inicio</a>
-      <a href="productos.html">Productos</a>
+      <a href="productos_index.php">Productos</a>
       <a href="servicios.html">Servicios</a>
       <a href="contactenos.html">Contáctenos</a>
       <a href="quienes_somos.html">Quiénes Somos</a>
