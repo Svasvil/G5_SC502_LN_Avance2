@@ -1,0 +1,28 @@
+.titulo-seccion {
+    margin: 10px 0 20px
+}
+
+.filtros {
+    margin: 10px 0 20px
+}
+
+.form-filtros {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap
+}
+
+.form-filtros input,
+.form-filtros select,
+.form-filtros button {
+    padding: 10px
+}
+
+/* Centrar tarjetas cuando hay pocas */
+.contenedor-flex{justify-content:center; gap:20px}
+
+/* Evitar que las cards se estiren raro: ancho fijo por tarjeta */
+.item{flex:0 1 18rem}
+
+/* Un poco de margen inferior para que respiren */
+.card{margin-bottom:20px}
