@@ -1,3 +1,44 @@
+<?php
+
+require_once 'conexion.php';
+session_start();
+
+// Este bloque procesa el formulario cuando se envía
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $usuario = $_POST["IdUsuario"];
+    $contrasena = $_POST["contrasena"];
+
+    $mysqli = abrirConexion();
+
+    // Busca el usuario en la base de datos
+    $sql = "SELECT * FROM usuarios WHERE usuario = ?";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->bind_param("s", $usuario);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    if ($resultado->num_rows == 1) {
+        $row = $resultado->fetch_assoc();
+        // Compara la contraseña ingresada con la encriptada
+        if (password_verify($contrasena, $row['contrasena'])) {
+            $_SESSION['usuario_id'] = $row['id'];
+            $_SESSION['rol'] = $row['rol'];
+            
+            $_SESSION['usuario'] = $row['usuario']; 
+            
+            header("Location: index.php");
+            exit;
+        } else {
+            $error = "Contraseña incorrecta.";
+        }
+    } else {
+        $error = "Usuario no encontrado.";
+    }
+
+    cerrarConexion($mysqli);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -35,14 +76,9 @@
    
 </div>
 </body>
-<footer class="footer">
-  <div class="footer-content">
-    <p>&copy; 2025 Acuario La Casa del Pez. Todos los derechos reservados.</p>
-    <p>
-      <a href="#">Política de Privacidad</a> | 
-      <a href="#">Términos de Servicio</a> | 
-      <a href="LaCasaDelPez@gmail.com">Contacto</a>
-    </p>
-  </div>
-</footer>
+    <footer class="footer py-4">
+        <div class="container text-center">
+            <small>&copy; 2025 examen 2 sebas vasquez.</small>
+        </div>
+    </footer>
 </html>

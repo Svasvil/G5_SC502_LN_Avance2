@@ -1,6 +1,6 @@
 
-CREATE DATABASE IF NOT EXISTS ProyectoAmbienteWebG5;
-USE ProyectoAmbienteWebG5;
+CREATE DATABASE IF NOT EXISTS citasmedicas;
+USE citasmedicas;
 
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -9,6 +9,15 @@ CREATE TABLE usuarios (
     correo VARCHAR(100) UNIQUE,
     contrasena VARCHAR(255),
     rol ENUM('admin', 'recepcionista') NOT NULL
+);
+
+CREATE TABLE citas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_paciente VARCHAR(100),
+    fecha DATE,
+    hora TIME,
+    estado ENUM('pendiente', 'confirmada', 'cancelada') DEFAULT 'pendiente',
+    nombre_usuario VARCHAR(100)
 );
 
 -- correo: admin@demo.com, clave: admin123 , usuario :admin

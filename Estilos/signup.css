@@ -1,0 +1,67 @@
+/* Estilos generales del cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Contenedor principal para centrar el formulario */
+.login-container {
+    width: 100%;
+    max-width: 450px; /* Ancho un poco más grande para el registro */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Caja del formulario de registro */
+.login-box {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+/* Título del formulario */
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #333;
+}
+
+/* Estilos para las etiquetas */
+.login-box label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+}
+
+/* Estilos para los campos de entrada */
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el botón */
+.login-box button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745; /* Un color verde para el registro */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

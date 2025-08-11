@@ -1,4 +1,61 @@
 
+.servicios-section {
+  padding: 50px 0;
+  background-color: #f0f8ff;
+}
+
+.card-servicio {
+  background-color: #0d1b47;
+  color: white;
+  padding: 20px;
+  margin: 15px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.card-servicio:hover {
+  transform: scale(1.05);
+}
+
+.card-servicio img {
+  max-height: 150px;
+  margin-bottom: 15px;
+}
+
+.titulo {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.titulo.rojo {
+  color: #f72585;
+}
+
+.titulo.azul {
+  color: #00b4d8;
+}
+
+.titulo.verde {
+  color: #90be6d;
+}
+
+.texto-informativo {
+  color: #0d1b47;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .card-servicio {
+    margin-bottom: 30px;
+  }
+}
+
+
 :root{
     --azulOscuro: #0e2776;
     --Negro: #000;
@@ -19,7 +76,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-left: 150px;
+    /* margin-left: 150px; <-- Línea eliminada */
 }
 
 .Navegacion-Principal {
@@ -28,7 +85,6 @@
     align-items: center;
     height: 100%;
     width: 100%;
-
     padding: 20px;
     box-sizing: border-box;
 }
@@ -51,11 +107,10 @@
 }
 
 .Navegacion-Principal a:hover {
-text-decoration: none;
-color: var(--Rojo);
-transform: translateY(-3px); 
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
-
+    text-decoration: none;
+    color: var(--Rojo);
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
 }
 
  .contenedor {
@@ -164,7 +219,8 @@ margin-right: 150px;
     background-color: var(--Blanco);
     color: var(--Celeste);
     text-align: center;
-    padding: 20px 10px 15px 10px;
+    padding: 30px 10px 15px 10px;
+    margin-top: 40px;
     width: 100%;
 }
 
@@ -180,7 +236,23 @@ margin-right: 150px;
     text-decoration: underline;
 }
 
-#wave {
-    position: relative;
-    top: 10px;
+.boton-comprar {
+    padding: 15px 30px;
+    background-color: #2c3e50;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-comprar:hover {
+    background-color: #e74c3c;
+}
+.boton-comprar a {
+    color: #fff;
+    text-decoration: none;
+    
 }
