@@ -1,57 +1,57 @@
 <?php
-require_once 'conexion.php';
+require_once 'conexion.php'; 
 
 $mensaje = "";
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
+    $nombre = trim($_POST['nombre']);
+    $apellido = trim($_POST['apellido']);
     $contrasena = $_POST['contrasena'];
     $confirmar = $_POST['confirmar'];
 
-    // Generar un nombre de usuario y un email simple
-    $nombre_usuario_generado = strtolower(substr($nombre, 0, 1) . $apellido);
-    $email_generado = strtolower(str_replace(" ", ".", $nombre)) . "." . strtolower($apellido) . "@dominio.com";
-
-    if ($contrasena !== $confirmar) {
+    if (empty($nombre) || empty($apellido) || empty($contrasena) || empty($confirmar)) {
+        $mensaje = "Todos los campos son obligatorios.";
+    } elseif ($contrasena !== $confirmar) {
         $mensaje = "Las contraseñas no coinciden.";
     } else {
+        $nombre_usuario = strtolower(substr($nombre, 0, 1) . $apellido);
+        $correo = strtolower(str_replace(" ", ".", $nombre)) . "." . strtolower($apellido) . "@acuario.com";
+
         $mysqli = abrirConexion();
-        
-        // 1. Verificar si el nombre de usuario ya existe
-        $stmt_check = $mysqli->prepare("SELECT id_usuario FROM Usuarios WHERE nombre_usuario = ?");
-        $stmt_check->bind_param("s", $nombre_usuario_generado);
-        $stmt_check->execute();
-        $result_check = $stmt_check->get_result();
-
-        if ($result_check->num_rows > 0) {
-            $mensaje = "Ya existe un usuario con ese nombre de usuario. Intenta con otro.";
+        if (!$mysqli || $mysqli->connect_errno) {
+            $mensaje = "Error de conexión: " . ($mysqli ? $mysqli->connect_error : mysqli_connect_error());
         } else {
-            // 2. Hashear la contraseña para mayor seguridad
-            $contrasena_hashed = password_hash($contrasena, PASSWORD_DEFAULT);
+            $stmt_check = $mysqli->prepare("SELECT id FROM usuarios WHERE usuario = ?");
+            if ($stmt_check) {
+                $stmt_check->bind_param("s", $nombre_usuario);
+                $stmt_check->execute();
+                $result_check = $stmt_check->get_result();
 
-            // 3. Insertar en la tabla Usuarios
-            $stmt_usuario = $mysqli->prepare("INSERT INTO Usuarios (nombre_usuario, contrasena, tipo_usuario) VALUES (?, ?, 'Registrado')");
-            $stmt_usuario->bind_param("ss", $nombre_usuario_generado, $contrasena_hashed);
-
-            if ($stmt_usuario->execute()) {
-                // Obtener el ID del usuario recién insertado
-                $id_usuario = $stmt_usuario->insert_id;
-
-                // 4. Insertar en la tabla Perfiles
-                $stmt_perfil = $mysqli->prepare("INSERT INTO Perfiles (id_usuario, nombre, email) VALUES (?, ?, ?)");
-                $nombre_completo = $nombre . " " . $apellido;
-                $stmt_perfil->bind_param("iss", $id_usuario, $nombre_completo, $email_generado);
-                
-                if ($stmt_perfil->execute()) {
-                    $mensaje = "Registro exitoso. Tu nombre de usuario es: **" . htmlspecialchars($nombre_usuario_generado) . "**";
+                if ($result_check && $result_check->num_rows > 0) {
+                    $mensaje = "Ya existe un usuario con ese nombre de usuario.";
                 } else {
-                    $mensaje = "Error al registrar el perfil: " . $stmt_perfil->error;
+                    $contrasena_hashed = password_hash($contrasena, PASSWORD_DEFAULT);
+                    $nombre_completo = $nombre . " " . $apellido;
+
+                    $stmt_insert = $mysqli->prepare("INSERT INTO usuarios (nombre, usuario, correo, contrasena, rol) VALUES (?, ?, ?, ?, 'recepcionista')");
+                    if ($stmt_insert) {
+                        $stmt_insert->bind_param("ssss", $nombre_completo, $nombre_usuario, $correo, $contrasena_hashed);
+                        if ($stmt_insert->execute()) {
+                            $mensaje = "Registro exitoso. Tu nombre de usuario es: <strong>" . htmlspecialchars($nombre_usuario) . "</strong>";
+                        } else {
+                            $mensaje = "Error al registrar el usuario: " . $stmt_insert->error;
+                        }
+                        $stmt_insert->close();
+                    } else {
+                        $mensaje = "Error preparando el INSERT: " . $mysqli->error;
+                    }
                 }
+                $stmt_check->close();
             } else {
-                $mensaje = "Error al registrar el usuario: " . $stmt_usuario->error;
+                $mensaje = "Error preparando la verificación: " . $mysqli->error;
             }
+            cerrarConexion($mysqli);
         }
-        cerrarConexion($mysqli);
     }
 }
 ?>
