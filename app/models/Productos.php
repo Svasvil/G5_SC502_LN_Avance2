@@ -1,120 +1,101 @@
 <?php
-require_once '../app/config/db.php';
+require_once __DIR__ . '/../config/db.php';
 
 class Productos {
     private $conn;
-    
+
     public function __construct() {
         $this->conn = Database::connect();
-        
-        // Verificar la conexión
         if ($this->conn->connect_error) {
             die("Error de conexión: " . $this->conn->connect_error);
         }
+        $this->conn->set_charset('utf8mb4');
     }
-    
-    /**
-     * Obtener todos los productos con sus categorías
-     */
+
     public function obtenerTodos() {
-        $sql = "SELECT p.*, c.nombre_categoria 
-                FROM Productos p 
-                LEFT JOIN categorias c ON p.id_categoria = c.id_categoria 
-                ORDER BY p.id_producto DESC";
-        
-        $result = $this->conn->query($sql);
-        
-        if ($result === false) {
-            throw new Exception("Error en la consulta: " . $this->conn->error);
-        }
-        
-        $productos = [];
-        while ($row = $result->fetch_assoc()) {
-            $productos[] = $row;
-        }
-        
-        return $productos;
+        $sql = "SELECT p.*, c.nombre_categoria
+                  FROM Productos p
+             LEFT JOIN categorias c ON p.id_categoria = c.id_categoria
+              ORDER BY p.id_producto DESC";
+        $res = $this->conn->query($sql);
+        if ($res === false) throw new Exception("Error en la consulta: " . $this->conn->error);
+
+        $data = [];
+        while ($row = $res->fetch_assoc()) $data[] = $row;
+        return $data;
     }
-    
-    /**
-     * Crear un nuevo producto
-     */
-    public function create($datos) {
-        $sql = "INSERT INTO Productos (nombre_producto, descripcion, precio, imagen_url, id_categoria, especie_relacionada) 
-                VALUES (?, ?, ?, ?, ?, ?)";
-        
+
+    public function obtenerPorId($id) {
+        $sql = "SELECT p.*, c.nombre_categoria
+                  FROM Productos p
+             LEFT JOIN categorias c ON p.id_categoria = c.id_categoria
+                 WHERE p.id_producto = ?";
         $stmt = $this->conn->prepare($sql);
-        
-        $stmt->bind_param("ssdsis", 
+        if (!$stmt) throw new Exception("Prepare error: " . $this->conn->error);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        return $res ? $res->fetch_assoc() : null;
+    }
+
+    public function create($datos) {
+        $sql = "INSERT INTO Productos
+                   (nombre_producto, descripcion, precio, imagen_url, id_categoria, especie_relacionada)
+                VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        if (!$stmt) throw new Exception("Prepare error: " . $this->conn->error);
+
+        $idCat = isset($datos['id_categoria']) && $datos['id_categoria'] !== '' ? (int)$datos['id_categoria'] : null;
+
+        $stmt->bind_param(
+            "ssdsis",
             $datos['nombre_producto'],
             $datos['descripcion'],
             $datos['precio'],
             $datos['imagen_url'],
-            $datos['id_categoria'],
+            $idCat,
             $datos['especie_relacionada']
         );
-        
+        if (!$stmt->execute()) throw new Exception("Execute error: " . $stmt->error);
         return $this->conn->insert_id;
     }
-    
-    /**
-     * Actualizar un producto existente
-     */
+
     public function update($id, $datos) {
-        $sql = "UPDATE Productos 
-                SET nombre_producto = ?, descripcion = ?, precio = ?, 
-                    imagen_url = ?, id_categoria = ?, especie_relacionada = ?
-                WHERE id_producto = ?";
-        
+        $sql = "UPDATE Productos
+                   SET nombre_producto = ?, descripcion = ?, precio = ?,
+                       imagen_url = ?, id_categoria = ?, especie_relacionada = ?
+                 WHERE id_producto = ?";
         $stmt = $this->conn->prepare($sql);
-        if (!$stmt) {
-            throw new Exception("Error al preparar la consulta: " . $this->conn->error);
-        }
-        
-        $stmt->bind_param("ssdsIsi", 
+        if (!$stmt) throw new Exception("Prepare error: " . $this->conn->error);
+
+        $idCat = isset($datos['id_categoria']) && $datos['id_categoria'] !== '' ? (int)$datos['id_categoria'] : null;
+
+        $stmt->bind_param(
+            "ssdsisi",
             $datos['nombre_producto'],
             $datos['descripcion'],
             $datos['precio'],
             $datos['imagen_url'],
-            $datos['id_categoria'],
+            $idCat,
             $datos['especie_relacionada'],
             $id
         );
-        
-        if (!$stmt->execute()) {
-            throw new Exception("Error al actualizar producto: " . $stmt->error);
-        }
-        
-        return $stmt->affected_rows > 0;
+        if (!$stmt->execute()) throw new Exception("Execute error: " . $stmt->error);
+        return $stmt->affected_rows >= 0;
     }
-    
-    /**
-     * Eliminar un producto
-     */
+
     public function delete($id) {
-        $sql = "DELETE FROM Productos WHERE id_producto = ?";
-        
-        $stmt = $this->conn->prepare($sql);
-        if (!$stmt) {
-            throw new Exception("Error al preparar la consulta: " . $this->conn->error);
-        }
-        
+        $stmt = $this->conn->prepare("DELETE FROM Productos WHERE id_producto = ?");
+        if (!$stmt) throw new Exception("Prepare error: " . $this->conn->error);
         $stmt->bind_param("i", $id);
-        
-        if (!$stmt->execute()) {
-            throw new Exception("Error al eliminar producto: " . $stmt->error);
-        }
-        
+        if (!$stmt->execute()) throw new Exception("Execute error: " . $stmt->error);
         return $stmt->affected_rows > 0;
     }
-    
-    /**
-     * Cerrar conexión
-     */
+
     public function __destruct() {
-        if ($this->conn) {
-            $this->conn->close();
-        }
+        if ($this->conn) $this->conn->close();
     }
 }
+
+
 ?>
