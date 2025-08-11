@@ -185,3 +185,54 @@
     color: var(--Rojo);
     text-decoration: underline;
 }
+
+
+/* Solución más simple y directa */
+
+/* Sobrescribir completamente el botón dropdown */
+.dropdown .dropdown-toggle {
+    background-color: var(--Blanco) !important;
+    color: var(--Celeste) !important;
+    border: none !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    padding: 0 20px !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Estados del botón */
+.dropdown .dropdown-toggle:hover,
+.dropdown .dropdown-toggle:focus,
+.dropdown .dropdown-toggle:active,
+.dropdown .dropdown-toggle.show {
+    background-color: var(--Blanco) !important;
+    color: var(--Rojo) !important;
+    border: none !important;
+    text-decoration: none !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+    outline: none !important;
+}
+
+/* Menú dropdown */
+.dropdown-menu {
+    background-color: var(--Blanco) !important;
+    border: 1px solid var(--Gris) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Enlaces dentro del dropdown */
+.dropdown-menu a {
+    color: var(--Celeste) !important;
+    font-weight: bold !important;
+    padding: 12px 20px !important;
+    transition: all 0.3s ease !important;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(98, 171, 217, 0.1) !important;
+    color: var(--Rojo) !important;
+}

@@ -20,7 +20,7 @@
         <?php if (isset($error)) echo "<div class='alert alert-danger'>$error</div>"; ?>
 
         <form id="login-form">
-            <label for="usuario">usuario</label>
+            <label for="usuario">Usuario</label>
             <input type="text" id="usuario" name="usuario" required>
 
             <label for="contrasena">Contraseña</label>
