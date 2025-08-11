@@ -1,5 +1,5 @@
 <?php
-require_once 'app/models/Usuario.php';
+require_once(ROOT_PATH . 'app/models/Usuario.php');
 
 class AuthController {
     public function login() {
@@ -9,7 +9,7 @@ class AuthController {
         $username = $_POST['usuario'] ?? '';
         $password = $_POST['contrasena'] ?? '';
 
-        if ($user->login($email, $password)) {
+        if ($user->login($username, $password)) {
             $_SESSION['user_logged_in'] = true;
             $_SESSION['username'] = $username;
             echo json_encode(['status' => 'success']);

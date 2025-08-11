@@ -1,5 +1,5 @@
 <?php
-require_once 'app/config/db.php';
+require_once(ROOT_PATH . 'app/config/db.php');
 
 class User {
     private $db;
