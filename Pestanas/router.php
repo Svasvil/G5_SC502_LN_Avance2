@@ -11,15 +11,18 @@ try {
         case 'login':
             header('Content-Type: application/json');
             $auth = new AuthController();
-            $auth->login();
+            $auth->login();         
             break;
-
+        case 'register':        
+            header('Content-Type: application/json');
+            $auth = new AuthController(); 
+            $auth->register();         
+            break;
         case 'listProductos':
             header('Content-Type: application/json');
             $m = new Productos();
             echo json_encode(['status' => 'success', 'data' => $m->obtenerTodos()]);
             break;
-
         case 'showProductos':
             header('Content-Type: application/json');
             $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
@@ -31,7 +34,6 @@ try {
                 echo json_encode(['status' => 'error', 'message' => 'Producto no encontrado']);
             }
             break;
-
         case 'createProductos':
             header('Content-Type: application/json');
             $m = new Productos();
@@ -50,7 +52,6 @@ try {
             $id = $m->create($datos);
             echo json_encode(['status' => 'success', 'id' => $id]);
             break;
-
         case 'updateProductos':
             header('Content-Type: application/json');
             $m = new Productos();
@@ -68,7 +69,6 @@ try {
             $ok = $m->update($id, $datos);
             echo json_encode(['status' => $ok ? 'success' : 'error']);
             break;
-
         case 'deleteProductos':
             header('Content-Type: application/json');
             $m = new Productos();
@@ -76,7 +76,6 @@ try {
             $ok = $m->delete($id);
             echo json_encode(['status' => $ok ? 'success' : 'error']);
             break;
-
         default:
             header('Content-Type: application/json');
             echo json_encode(['status' => 'error', 'message' => 'Ruta no encontrada']);
@@ -85,5 +84,5 @@ try {
 } catch (Exception $e) {
     header('Content-Type: application/json');
     echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
-}
 
+};
