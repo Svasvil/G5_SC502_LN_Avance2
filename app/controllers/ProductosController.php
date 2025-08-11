@@ -1,17 +1,37 @@
 <?php
-require_once 'app/models/Citas.php';
+require_once '../app/models/Productos.php';
 
-class CitasController {
+class ProductosController {
+    private $productosModel;
+    
+    public function __construct() {
+        $this->productosModel = new Productos();
+    }
+    
+    /**
+     * Mostrar todos los productos
+     */
+    public function index() {
+        try {
+            $productos = $this->productosModel->obtenerTodos();
+            $titulo = "Todos nuestros productos";
+            $this->mostrarVista('productos', compact('productos', 'titulo'));
+        } catch (Exception $e) {
+            $this->manejarError("Error al cargar productos: " . $e->getMessage());
+        }
+    }
+    
     public function create() {
-        $cita = new Citas();
+        $producto = new Productos();
 
-        $nombre_paciente = $_POST['nombre_paciente'] ?? '';
-        $fecha = $_POST['fecha'] ?? '';
-        $hora = $_POST['hora'] ?? '';
-        $estado = $_POST['estado'] ?? '';
-        $nombre_usuario = $_POST['nombre_usuario'] ?? '';
+        $nombre_producto = $_POST['nombre_producto'] ?? '';
+        $descripcion = $_POST['descripcion'] ?? '';
+        $precio = $_POST['precio'] ?? '';
+        $imagen_url = $_POST['imagen_url'] ?? '';
+        $id_categoria = $_POST['id_categoria'] ?? '',
+        $especie_relacionada = $_POST['especie_relacionada'] ?? '';
 
-        if ($cita->create($nombre_paciente, $fecha, $hora, $estado, $nombre_usuario)) {
+        if ($cita->create($nombre_producto, $descripcion, $precio, $imagen_url, $especie_relacionada)) {
             echo json_encode(['status' => 'success']);
         } else {
             echo json_encode(['status' => 'error', 'message' => 'No se pudo crear el producto']);
@@ -19,18 +39,18 @@ class CitasController {
     }
 
     public function list() {
-        $cita = new Citas();
+        $producto = new Productos();
 
-        $citasA = $cita->getAll();
+        $productoA = $producto->getAll();
 
-        echo json_encode(['status' => 'success', 'data' => $citasA]);
+        echo json_encode(['status' => 'success', 'data' => $productoA]);
     }
 
     public function show() {
-        $cita = new Citas();
-        $id = $_GET['id'] ?? 0;
+        $producto = new Productos();
+        $id = $_GET['id_producto'] ?? 0;
 
-        $item = $cita->getById($id);
+        $item = $producto->getById($id);
 
         if ($item) {
             echo json_encode(['status' => 'success', 'data' => $item]);
@@ -40,16 +60,17 @@ class CitasController {
     }
 
     public function update() {
-        $cita = new Citas();
+        $producto = new Productos();
 
-        $id = $_POST['id'] ?? 0;
-        $nombre_paciente = $_POST['nombre_paciente'] ?? '';
-        $fecha = $_POST['fecha'] ?? '';
-        $hora = $_POST['hora'] ?? '';
-        $estado = $_POST['estado'] ?? '';
-        $nombre_usuario = $_POST['nombre_usuario'] ?? '';
+        $id = $_POST['id_producto'] ?? 0;
+        $nombre_producto = $_POST['nombre_producto'] ?? '';
+        $descripcion = $_POST['descripcion'] ?? '';
+        $precio = $_POST['precio'] ?? '';
+        $imagen_url = $_POST['imagen_url'] ?? '';
+        $id_categoria = $_POST['id_categoria'] ?? '',
+        $especie_relacionada = $_POST['especie_relacionada'] ?? '';
 
-        if ($cita->update($id, $nombre_paciente, $fecha, $hora, $estado, $nombre_usuario)) {
+        if ($cita->update($id, $nombre_producto, $descripcion, $precio, $imagen_url, $especie_relacionada)) {
             echo json_encode(['status' => 'success']);
         } else {
             echo json_encode(['status' => 'error', 'message' => 'No se pudo actualizar']);
@@ -57,8 +78,8 @@ class CitasController {
     }
 
     public function delete() {
-        $cita = new Citas();
-        $id = $_POST['id'] ?? 0;
+        $producto = new Productos();
+        $id = $_POST['id_producto'] ?? 0;
 
         if ($cita->delete($id)) {
             echo json_encode(['status' => 'success']);
@@ -67,3 +88,22 @@ class CitasController {
         }
     }
 }
+
+    
+    /**
+     * Mostrar una vista
+     */
+    private function mostrarVista($vista, $datos = []) {
+        extract($datos);
+        include "../Pestanas/$vista.php";
+    }
+    
+    /**
+     * Manejar errores
+     */
+    private function manejarError($mensaje) {
+        $error = $mensaje;
+        include '../Pestanas/error.php';
+    }
+}
+?>
