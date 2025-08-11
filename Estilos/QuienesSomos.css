@@ -97,29 +97,24 @@ body {
 
 
 .footer {
-  background-color: var(--azulOscuro);
-  color: var(--Blanco);
-  padding: 20px;
-  text-align: center;
+    background-color: var(--Blanco);
+    color: var(--Celeste);
+    text-align: center;
+    padding: 30px 10px 15px 10px;
+    margin-top: 40px;
+    width: 100%;
 }
 
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
+.footer-content a {
+    color: var(--Celeste);
+    text-decoration: none;
+    margin: 0 8px;
+    transition: color 0.3s;
 }
 
-.footer p {
-  margin: 5px 0;
-}
-
-.footer a {
-  color: var(--Blanco);
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer a:hover {
-  color: var(--Celeste);
+.footer-content a:hover {
+    color: var(--Rojo);
+    text-decoration: underline;
 }
 
 /* Responsive Styles */

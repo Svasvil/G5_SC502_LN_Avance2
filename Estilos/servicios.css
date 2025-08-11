@@ -76,7 +76,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-left: 150px;
+    /* margin-left: 150px; <-- Línea eliminada */
 }
 
 .Navegacion-Principal {
@@ -85,7 +85,6 @@
     align-items: center;
     height: 100%;
     width: 100%;
-
     padding: 20px;
     box-sizing: border-box;
 }
@@ -108,11 +107,10 @@
 }
 
 .Navegacion-Principal a:hover {
-text-decoration: none;
-color: var(--Rojo);
-transform: translateY(-3px); 
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
-
+    text-decoration: none;
+    color: var(--Rojo);
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
 }
 
  .contenedor {
