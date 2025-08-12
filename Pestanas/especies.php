@@ -16,23 +16,46 @@ if (!isset($especies)) $especies = [];
 
 <body>
     <br>
-    <div class="contendedorNav">
-        <nav class="Navegacion-Principal ">
-            <a href="index.php">
-                <img src="../Img/89e80d4a-3e74-4e90-9368-87538123716e_removalai_preview.png" width="125" height="90" alt="Logo">
-            </a>
-            <a href="login.php">Iniciar Sesión</a>
-            <a href="index.php">Inicio</a>
-            <a href="productos_index.php">Productos</a>
-            <a href="servicios.html">Servicios</a>
-            <a href="contactenos.html">Contáctenos</a>
-            <a href="quienes_somos.html">Quiénes Somos</a>
-            <a href="perfil.html">Mi Cuenta</a>
-            <a href="especies_index.php">Especies</a>
+<div class="contendedorNav">
+  <nav class="Navegacion-Principal ">   
+     <a href="index.php">
+    <img src="../Img/89e80d4a-3e74-4e90-9368-87538123716e_removalai_preview.png" width="125" height="90" alt="Logo">
+  </a>
+      <a href="login.php">Iniciar Sesión</a>
+      <a href="index.php">Inicio</a>
+      <a href="productos_index.php">Productos</a>
+
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > Servicios</a>
+  <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
+                  <a href="especies_index.php">Especies</a>
             <a href="adopciones.html">Adopciones</a>
-        </nav>
+  </div>
+</div>
+            
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > Nosotros</a>
+  <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
+    <a href="quienes_somos.html">Quiénes Somos</a>
+    <a href="contactenos.html">Contáctenos</a>
+  </div>
+</div>
+
+
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > Tu cuenta</a>
+  <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
+    <a href="login.php">Iniciar Sesión</a>
+    <a href="perfil.html">Mi Cuenta</a>
+  </div>
+</div>
+
+     
+
+    </nav>
     </div>
     <br>
+
 
     <svg id="wave" style="transform:rotate(180deg); transition: 0.3s" viewBox="0 0 1440 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <defs>
