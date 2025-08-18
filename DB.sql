@@ -66,3 +66,22 @@ INSERT INTO Productos (nombre_producto, descripcion, precio, imagen_url, id_cate
 ('Decoración LED para Peceras', 'Rocas artificiales con luz LED. Añade color sin afectar a tus peces.', 15000.00, '../Img/decoracion.jpg', 8, 'Peces de acuario'),
 ('Dispensador de Alimento', 'Programa comidas para tu mascota. Hasta 6L de capacidad. Ideal para gatos y perros medianos.', 65000.00, '../Img/dispensador.png', 9, 'Perros y Gatos'),
 ('Jaula para Hámster', 'Con túneles, rueda y doble nivel. Espacio ideal para el juego y descanso de tu roedor.', 45000.00, '../Img/jaula.jpg', 10, 'Hámsters');
+
+CREATE TABLE IF NOT EXISTS especies (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  habitat VARCHAR(60),
+  dieta VARCHAR(60),
+  tamano VARCHAR(40),
+  cuidados VARCHAR(255),
+  imagen VARCHAR(200)
+);
+
+CREATE TABLE IF NOT EXISTS adopciones (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(120) NOT NULL,
+  email VARCHAR(120) NOT NULL,
+  especie VARCHAR(100) NOT NULL,
+  detalle TEXT,
+  fecha_solicitud DATETIME NOT NULL
+);
