@@ -35,7 +35,6 @@
       ¿No tienes cuenta? <a href="signup.php" style="color: var(--edus-light-blue); text-decoration: underline;">Regístrate aquí</a>
     </p>
     </div>
-   
 </div>
 </body>
     <footer class="footer">
