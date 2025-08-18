@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $pdo = new PDO('mysql:host=127.0.0.1;dbname=proyectoambientewebg5;charset=utf8mb4', 'root', 'contraseña', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-$stmt = $pdo->prepare('SELECT p.nombre_producto, p.descripcion, p.precio, p.imagen_url, p.especie_relacionada, c.nombre_categoria FROM productos p LEFT JOIN categorias c ON p.id_categoria = c.id_categoria WHERE p.id_producto = ?');
+$stmt = $pdo->prepare('SELECT p.id_producto, p.nombre_producto, p.descripcion, p.precio, p.imagen_url, p.especie_relacionada, c.nombre_categoria FROM productos p LEFT JOIN categorias c ON p.id_categoria = c.id_categoria WHERE p.id_producto = ?');
 $stmt->execute([$id]);
 $p = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$p) {
@@ -21,48 +21,52 @@ if (!$p) {
     <title><?php echo htmlspecialchars($p['nombre_producto']); ?> - Acuario La Casa del Pez</title>
     <link rel="stylesheet" href="../Estilos/producto.css">
     <link rel="stylesheet" href="../Estilos/Index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
 </head>
 
 <body>
     <br>
-  <div class="contendedorNav">
-    <nav class="Navegacion-Principal ">
-      <a href="index.php">
-        <img src="../Img/89e80d4a-3e74-4e90-9368-87538123716e_removalai_preview.png" width="125" height="90" alt="Logo">
-      </a>
-      <a href="admin_productos.php">*Admin* Productos</a>
-      <a href="index.php">Inicio</a>
-      <a href="productos_index.php">Productos</a>
+    <div class="contendedorNav">
+        <nav class="Navegacion-Principal ">
+            <a href="index.php">
+                <img src="../Img/89e80d4a-3e74-4e90-9368-87538123716e_removalai_preview.png" width="125" height="90" alt="Logo">
+            </a>
+            <a href="admin_productos.php">*Admin* Productos</a>
+            <a href="index.php">Inicio</a>
+            <a href="productos_index.php">Productos</a>
 
-      <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Servicios</a>
-        <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
-          <a href="especies_index.php">Especies</a>
-          <a href="adopciones.html">Adopciones</a>
-        </div>
-      </div>
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Servicios</a>
+                <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
+                    <a href="especies_index.php">Especies</a>
+                    <a href="adopciones.html">Adopciones</a>
+                </div>
+            </div>
 
-      <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Nosotros</a>
-        <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
-          <a href="quienes_somos.html">Quiénes Somos</a>
-          <a href="contactenos.html">Contáctenos</a>
-        </div>
-      </div>
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Nosotros</a>
+                <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
+                    <a href="quienes_somos.html">Quiénes Somos</a>
+                    <a href="contactenos.html">Contáctenos</a>
+                </div>
+            </div>
 
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tu cuenta</a>
+                <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
+                    <a href="perfil.html">Mi Cuenta</a>
+                    <a href="logout.php">Cerrar Sesión</a>
+                </div>
+            </div>
 
-      <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tu cuenta</a>
-        <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
-          <a href="perfil.html">Mi Cuenta</a>
-          <a href="logout.php">Cerrar Sesión</a>
-        </div>
-      </div>
-      
-    </nav>
-  </div>
-  <br>
+            <div style="margin-left:auto; display:flex; align-items:center;">
+                <a href="carrito.html" class="btn btn-outline-primary">
+                    🛒 Carrito <span id="cartCount" class="badge badge-pill badge-info">0</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+    <br>
 
     <svg id="wave" style="transform:rotate(180deg); transition: .3s" viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -97,7 +101,11 @@ if (!$p) {
                     </ul>
                 </div>
 
-                <a class="btnProducto" href="productos_index.php">Volver al catálogo</a>
+                <div class="d-flex align-items-center" style="gap:8px; margin-top:10px;">
+                    <input type="number" id="qty" value="1" min="1" class="form-control" style="width:90px;">
+                    <button id="addToCart" class="btnProducto" data-id="<?php echo (int)$p['id_producto']; ?>" data-nombre="<?php echo htmlspecialchars($p['nombre_producto']); ?>" data-precio="<?php echo (float)$p['precio']; ?>" data-imagen="<?php echo htmlspecialchars($p['imagen_url'] ?: '../Img/producto-default.jpg'); ?>">Agregar al carrito</button>
+                    <a class="btn btn-outline-primary" href="productos_index.php">Volver al catálogo</a>
+                </div>
             </div>
         </section>
     </main>
@@ -118,6 +126,48 @@ if (!$p) {
             <p><a href="#">Política de Privacidad</a> | <a href="#">Términos de Servicio</a> | <a href="mailto:LaCasaDelPez@gmail.com">Contacto</a></p>
         </div>
     </footer>
+
+    <script>
+        (function() {
+            var btn = document.getElementById('addToCart');
+            if (!btn) return;
+            btn.addEventListener('click', function() {
+                var id = this.getAttribute('data-id');
+                var nombre = this.getAttribute('data-nombre');
+                var precio = parseFloat(this.getAttribute('data-precio')) || 0;
+                var imagen = this.getAttribute('data-imagen');
+                var qty = parseInt(document.getElementById('qty').value) || 1;
+                if (qty < 1) qty = 1;
+                var cartRaw = localStorage.getItem('carrito');
+                var cart = cartRaw ? JSON.parse(cartRaw) : [];
+                var idx = -1;
+                for (var i = 0; i < cart.length; i++) {
+                    if (String(cart[i].id) === String(id)) {
+                        idx = i;
+                        break;
+                    }
+                }
+                if (idx > -1) {
+                    cart[idx].cantidad += qty;
+                } else {
+                    cart.push({
+                        id: id,
+                        nombre: nombre,
+                        precio: precio,
+                        imagen: imagen,
+                        cantidad: qty
+                    });
+                }
+                localStorage.setItem('carrito', JSON.stringify(cart));
+                window.location.href = 'carrito.html';
+            });
+        })();
+    </script>
+
+    <script src="../js/cartCounter.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

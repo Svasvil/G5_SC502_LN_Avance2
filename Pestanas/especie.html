@@ -43,7 +43,6 @@
                 </div>
             </div>
 
-
             <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button"
                     id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tu
@@ -54,6 +53,11 @@
                 </div>
             </div>
 
+            <div style="margin-left:auto; display:flex; align-items:center;">
+                <a href="carrito.html" class="btn btn-outline-primary">
+                    🛒 Carrito <span id="cartCount" class="badge badge-pill badge-info">0</span>
+                </a>
+            </div>
         </nav>
     </div>
     <br>
@@ -122,6 +126,7 @@
         </div>
     </footer>
 
+    <script src="../js/cartCounter.js"></script>
     <script>
         var DATA = {
             "1": { nombre: "Pez Payaso", img: "../Img/PezKoi.jpg", desc: "Pez tropical de arrecife, convive con anémonas.", habitat: "Arrecife", dieta: "Omnívoro", tamano: "3–8 cm", cuidados: "24–27°C, agua salada." },

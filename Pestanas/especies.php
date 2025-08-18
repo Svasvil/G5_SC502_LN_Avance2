@@ -41,7 +41,6 @@ if (!isset($especies)) $especies = [];
                 </div>
             </div>
 
-
             <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tu cuenta</a>
                 <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
@@ -50,6 +49,11 @@ if (!isset($especies)) $especies = [];
                 </div>
             </div>
 
+            <div style="margin-left:auto; display:flex; align-items:center;">
+                <a href="carrito.html" class="btn btn-outline-primary">
+                    🛒 Carrito <span id="cartCount" class="badge badge-pill badge-info">0</span>
+                </a>
+            </div>
         </nav>
     </div>
     <br>
@@ -119,6 +123,7 @@ if (!isset($especies)) $especies = [];
             <p><a href="#">Política de Privacidad</a> | <a href="#">Términos de Servicio</a> | <a href="mailto:LaCasaDelPez@gmail.com">Contacto</a></p>
         </div>
     </footer>
+    <script src="../js/cartCounter.js"></script>
 </body>
 
 </html>

@@ -13,43 +13,55 @@
 
 <body>
     <br>
-  <div class="contendedorNav">
-    <nav class="Navegacion-Principal ">
-      <a href="index.php">
-        <img src="../Img/89e80d4a-3e74-4e90-9368-87538123716e_removalai_preview.png" width="125" height="90" alt="Logo">
-      </a>
-      <a href="admin_productos.php">*Admin* Productos</a>
-      <a href="index.php">Inicio</a>
-      <a href="productos_index.php">Productos</a>
+    <div class="contendedorNav">
+        <nav class="Navegacion-Principal ">
+            <a href="index.php">
+                <img src="../Img/89e80d4a-3e74-4e90-9368-87538123716e_removalai_preview.png" width="125" height="90"
+                    alt="Logo">
+            </a>
+            <a href="admin_productos.php">*Admin* Productos</a>
+            <a href="index.php">Inicio</a>
+            <a href="productos_index.php">Productos</a>
 
-      <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Servicios</a>
-        <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
-          <a href="especies_index.php">Especies</a>
-          <a href="adopciones.html">Adopciones</a>
-        </div>
-      </div>
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button"
+                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Servicios</a>
+                <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
+                    <a href="especies_index.php">Especies</a>
+                    <a href="adopciones.html">Adopciones</a>
+                </div>
+            </div>
 
-      <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Nosotros</a>
-        <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
-          <a href="quienes_somos.html">Quiénes Somos</a>
-          <a href="contactenos.html">Contáctenos</a>
-        </div>
-      </div>
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button"
+                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Nosotros</a>
+                <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
+                    <a href="quienes_somos.html">Quiénes Somos</a>
+                    <a href="contactenos.html">Contáctenos</a>
+                </div>
+            </div>
 
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button"
+                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tu
+                    cuenta</a>
+                <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
+                    <a href="perfil.html">Mi Cuenta</a>
+                    <a href="logout.php">Cerrar Sesión</a>
+                </div>
+            </div>
 
-      <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tu cuenta</a>
-        <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
-          <a href="perfil.html">Mi Cuenta</a>
-          <a href="logout.php">Cerrar Sesión</a>
-        </div>
-      </div>
-      
-    </nav>
-  </div>
-  <br>
+            <div style="margin-left:auto; display:flex; align-items:center;">
+                <a href="carrito.html" class="btn btn-outline-primary">
+                    🛒 Carrito <span id="cartCount" class="badge badge-pill badge-info">0</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+    <br>
+
 
 
     <svg id="wave" style="transform:rotate(180deg);transition:.3s" viewBox="0 0 1440 100"
@@ -118,6 +130,7 @@
                     href="mailto:LaCasaDelPez@gmail.com">Contacto</a></p>
         </div>
     </footer>
+    <script src="../js/cartCounter.js"></script>
 </body>
 
 </html>

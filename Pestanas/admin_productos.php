@@ -38,7 +38,6 @@
         </div>
       </div>
 
-
       <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tu cuenta</a>
         <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
@@ -47,6 +46,11 @@
         </div>
       </div>
 
+      <div style="margin-left:auto; display:flex; align-items:center;">
+        <a href="carrito.html" class="btn btn-outline-primary">
+          🛒 Carrito <span id="cartCount" class="badge badge-pill badge-info">0</span>
+        </a>
+      </div>
     </nav>
   </div>
   <br>
@@ -157,6 +161,7 @@
     </div>
   </footer>
 
+  <script src="../js/cartCounter.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>

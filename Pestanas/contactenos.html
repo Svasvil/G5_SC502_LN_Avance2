@@ -23,8 +23,7 @@
       <a href="productos_index.php">Productos</a>
 
       <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Servicios</a>
+        <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Servicios</a>
         <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
           <a href="especies_index.php">Especies</a>
           <a href="adopciones.html">Adopciones</a>
@@ -32,24 +31,26 @@
       </div>
 
       <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Nosotros</a>
+        <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Nosotros</a>
         <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
           <a href="quienes_somos.html">Quiénes Somos</a>
           <a href="contactenos.html">Contáctenos</a>
         </div>
       </div>
 
-
       <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tu cuenta</a>
+        <a class="btn btn-secondary dropdown-toggle dropdown-blanco" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Tu cuenta</a>
         <div class="dropdown-menu dropdown-blanco" aria-labelledby="dropdownMenuLink">
           <a href="perfil.html">Mi Cuenta</a>
           <a href="logout.php">Cerrar Sesión</a>
         </div>
       </div>
 
+      <div style="margin-left:auto; display:flex; align-items:center;">
+        <a href="carrito.html" class="btn btn-outline-primary">
+          🛒 Carrito <span id="cartCount" class="badge badge-pill badge-info">0</span>
+        </a>
+      </div>
     </nav>
   </div>
   <br>
@@ -124,6 +125,7 @@
 
 </body>
 
+<script src="../js/cartCounter.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
   integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
