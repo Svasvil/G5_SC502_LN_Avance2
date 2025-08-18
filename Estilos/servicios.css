@@ -76,7 +76,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-left: 150px;
+    /* margin-left: 150px; <-- Línea eliminada */
 }
 
 .Navegacion-Principal {
@@ -85,7 +85,6 @@
     align-items: center;
     height: 100%;
     width: 100%;
-
     padding: 20px;
     box-sizing: border-box;
 }
@@ -108,11 +107,10 @@
 }
 
 .Navegacion-Principal a:hover {
-text-decoration: none;
-color: var(--Rojo);
-transform: translateY(-3px); 
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
-
+    text-decoration: none;
+    color: var(--Rojo);
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
 }
 
  .contenedor {
@@ -236,4 +234,45 @@ margin-right: 150px;
 .footer-content a:hover {
     color: var(--Rojo);
     text-decoration: underline;
+}
+
+.boton-comprar {
+    padding: 15px 30px;
+    background-color: #2c3e50;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-comprar:hover {
+    background-color: #e74c3c;
+}
+.boton-comprar a {
+    color: #fff;
+    text-decoration: none;
+    
+}
+
+.dropdown-menu {
+    background-color: var(--Blanco) !important;
+    border: 1px solid var(--Gris) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Enlaces dentro del dropdown */
+.dropdown-menu a {
+    color: var(--Celeste) !important;
+    font-weight: bold !important;
+    padding: 12px 20px !important;
+    transition: all 0.3s ease !important;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(98, 171, 217, 0.1) !important;
+    color: var(--Rojo) !important;
 }

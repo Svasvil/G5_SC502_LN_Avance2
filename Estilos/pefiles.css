@@ -1,0 +1,349 @@
+:root{
+    --azulOscuro: #0e2776;
+    --Negro: #000;
+    --Blanco: #ffff;
+    --Celeste: #62ABD9;
+    --Azulmedio: #032CA6;
+    --Gris: #D9D9D9;
+    
+    --Contraste : #F05050;
+    --Rojo:#FF0000;
+    --Verde: #09ff00;
+}
+
+/* Estilos básicos del body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navegación */
+.contendedorNav {
+    display: flex;
+    background-color: var(--Blanco);
+    height: 75px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.Navegacion-Principal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.Navegacion-Principal a {
+    color: var(--Celeste);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Navegacion-Principal a.navbar-brand img {
+    height: 60px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.Navegacion-Principal a:hover {
+    text-decoration: none;
+    color: var(--Rojo);
+    transform: translateY(-3px); 
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+}
+
+/* Contenedor principal */
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 40px 20px;
+    background-color: transparent;
+}
+
+/* CSS específico para el perfil de usuario */
+.perfil-usuario {
+    background-color: var(--Blanco);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+/* Encabezado del perfil */
+.perfil-encabezado {
+    background: var(--Celeste);
+    color: var(--Blanco);
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+}
+
+/* Nombre del usuario */
+.usuario-nombre {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: var(--Blanco);
+}
+
+/* Rol del usuario */
+.usuario-rol {
+    font-size: 1.1rem;
+    margin: 10px 0 0 0;
+    opacity: 0.9;
+    font-weight: 300;
+    color: var(--Blanco);
+}
+
+/* Información del perfil */
+.perfil-informacion {
+    padding: 30px 20px;
+    background-color: var(--Blanco);
+}
+
+/* Secciones de información */
+.info-seccion {
+    margin-bottom: 25px;
+}
+
+.info-seccion:last-child {
+    margin-bottom: 0;
+}
+
+.seccion-titulo {
+    color: var(--azulOscuro);
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--Celeste);
+    position: relative;
+}
+
+.seccion-titulo::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--azulOscuro);
+}
+
+/* Lista de información */
+.info-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Items de información */
+.info-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--Gris);
+    transition: background-color 0.3s ease;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item:hover {
+    background-color: rgba(98, 171, 217, 0.05);
+    border-radius: 8px;
+    padding-left: 10px;
+    margin-left: -10px;
+}
+
+.info-item i {
+    color: var(--Celeste);
+    font-size: 1.2rem;
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+}
+
+.info-etiqueta {
+    color: var(--azulOscuro);
+    font-weight: 600;
+    margin-right: 8px;
+    min-width: 140px;
+}
+
+.info-valor {
+    color: var(--Negro);
+    flex: 1;
+}
+
+/* Sección de acciones */
+.perfil-acciones {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid var(--Gris);
+    text-align: center;
+}
+
+/* Botón de regresar */
+.btn-regresar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background-color: var(--Celeste);
+    color: var(--Blanco);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    min-width: 140px;
+    font-size: 16px;
+}
+
+.btn-regresar:hover {
+    background-color: var(--azulOscuro);
+    color: var(--Blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+.btn-regresar svg {
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.btn-regresar:hover svg {
+    transform: translateX(-2px);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--Blanco);
+    color: var(--Celeste);
+    text-align: center;
+    padding: 30px 10px 15px 10px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.footer-content a {
+    color: var(--Celeste);
+    text-decoration: none;
+    margin: 0 8px;
+    transition: color 0.3s;
+}
+
+.footer-content a:hover {
+    color: var(--Rojo);
+    text-decoration: underline;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .contenedor {
+        padding: 20px 10px;
+    }
+    
+    .perfil-usuario {
+        margin: 10px;
+        border-radius: 10px;
+    }
+    
+    .perfil-encabezado {
+        padding: 20px 15px;
+    }
+    
+    .usuario-nombre {
+        font-size: 1.8rem;
+    }
+    
+    .usuario-rol {
+        font-size: 1rem;
+    }
+    
+    .perfil-informacion {
+        padding: 20px 15px;
+    }
+    
+    .seccion-titulo {
+        font-size: 1.2rem;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 0;
+    }
+    
+    .info-etiqueta {
+        min-width: auto;
+        margin-bottom: 5px;
+    }
+    
+    .info-item i {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .usuario-nombre {
+        font-size: 1.6rem;
+    }
+    
+    .info-item {
+        padding: 12px 0;
+    }
+    
+    .btn-regresar {
+        width: 100%;
+        padding: 15px 20px;
+    }
+}
+
+.dropdown-menu {
+    background-color: var(--Blanco) !important;
+    border: 1px solid var(--Gris) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Enlaces dentro del dropdown */
+.dropdown-menu a {
+    color: var(--Celeste) !important;
+    font-weight: bold !important;
+    padding: 12px 20px !important;
+    transition: all 0.3s ease !important;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(98, 171, 217, 0.1) !important;
+    color: var(--Rojo) !important;
+}

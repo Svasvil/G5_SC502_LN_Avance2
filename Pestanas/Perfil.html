@@ -3,16 +3,16 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contáctenos - Acuario La Casa del Pez</title>
-  <link rel="stylesheet" href="../Estilos/index.css">
-  <link rel="stylesheet" href="../Estilos/contactenos.css">
+  <title>Perfil del Usuario</title>
+
+  <link href="../Estilos/pefiles.css" rel="stylesheet">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
-  <br>
+<br>
   <div class="contendedorNav">
     <nav class="Navegacion-Principal ">
       <a href="index.php">
@@ -69,36 +69,80 @@
   </svg>
   <br><br><br><br><br><br>
 
-  <div class="contacto-contenedor">
-    <div class="contacto-izquierda">
-      <h2>Información de contacto</h2>
-      <p><strong>Teléfono:</strong> +506 8570-8816</p>
-      <p>
-        <br>
-        <strong>Facebook:</strong>
-        <a href="https://www.facebook.com/MarkosBoganN" target="_blank">
-          <i class="fab fa-facebook-square"></i> Acuario la Casa del Pez
-          <br></a>
 
-      <p><strong>Correo:</strong> LaCasaDelPez@gmail.com</p>
-      <br>
-      </p>
-    </div>
-    <br>
+  <div class="contenedor">
+    <div class="perfil-usuario">
 
-    <div class="contacto-derecha">
-      <h2>Envíanos un mensaje</h2>
-      <form>
-        <input type="text" placeholder="Nombre completo" required />
-        <input type="email" placeholder="Correo electrónico" required />
-        <input type="tel" placeholder="Teléfono (opcional)" />
-        <textarea rows="5" placeholder="Escribenos..." required></textarea>
-        <button type="submit">Enviar Mensaje</button>
-      </form>
+      <div class="perfil-encabezado">
+        <h1 class="usuario-nombre">Admin1</h1>
+        <p class="usuario-rol">Rol del Usuario : Admin</p>
+      </div>
+
+
+      <div class="perfil-informacion">
+
+        <div class="info-seccion">
+          <h3 class="seccion-titulo">Información del usuario</h3>
+          <div class="info-lista">
+            <div class="info-item">
+              <i class="bi bi-envelope"></i>
+              <span class="info-etiqueta">Correo :</span>
+              <span class="info-valor" id="user-email">usuario@admin123.com</span>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-phone"></i>
+              <span class="info-etiqueta">Teléfono:</span>
+              <span class="info-valor" id="user-phone">5012 - 1305</span>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-geo-alt"></i>
+              <span class="info-etiqueta">Dirección:</span>
+              <span class="info-valor" id="user-address">La aurora , Heredia</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-seccion">
+          <h3 class="seccion-titulo">Detalles de la Cuenta</h3>
+          <div class="info-lista">
+            <div class="info-item">
+              <i class="bi bi-person-fill"></i>
+              <span class="info-etiqueta">Nombre de Usuario:</span>
+              <span class="info-valor" id="user-username">admin</span>
+            </div>
+            <div class="info-item">
+              <i class="bi bi-calendar"></i>
+              <span class="info-etiqueta">Miembro desde:</span>
+              <span class="info-valor" id="user-member-since">Enero 2020</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón de regreso -->
+      <div class="perfil-acciones">
+        <a href="index.php" class="btn-regresar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 14l-4 -4l4 -4" />
+            <path d="M5 10h11a4 4 0 1 1 0 8h-1" />
+          </svg>
+          Regresar
+        </a>
+
+        <a href="admin_productos.php" class="btn-regresar" style="margin-left:8px;">
+          <!-- icono flecha/engranaje opcional -->
+          Administrar productos
+        </a>
+      </div>
+
     </div>
   </div>
 
-  </div>
+
+
+
+
   <svg id="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 140" version="1.1"
     xmlns="http://www.w3.org/2000/svg">
     <defs>
@@ -118,12 +162,16 @@
       <p>
         <a href="#">Política de Privacidad</a> |
         <a href="#">Términos de Servicio</a> |
-        <a href="mailto:LaCasaDelPez@gmail.com">Contacto</a>
+        <a href="LaCasaDelPez@gmail.com">Contacto</a>
       </p>
     </div>
   </footer>
 
 </body>
+
+</html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 
 <script src="../js/cartCounter.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -133,5 +181,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
   integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+</body>
 
 </html>
